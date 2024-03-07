@@ -11,7 +11,6 @@ const likedRouter = require("./src/router/liked.router");
 const savedRouter = require("./src/router/saved.router");
 const port = process.env.PORT || 3005;
 
-
 app.use(cors());
 app.use(helmet());
 app.use(express.static("public"));
@@ -23,6 +22,9 @@ app.use(foodRouter);
 app.use(likedRouter);
 app.use(savedRouter);
 
+app.get("/", (req, res) => {
+  res.send("API has running");
+});
 
 app.listen(port, () => {
   console.log(`Mama Recipe Backend listening on port ${port}`);
